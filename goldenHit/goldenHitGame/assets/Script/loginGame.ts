@@ -7,7 +7,6 @@
 // Learn life-cycle callbacks:
 //  - [Chinese] http://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
 //  - [English] http://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
-import scoket from './socket.io';
 
 const {
     ccclass,
@@ -21,15 +20,17 @@ export default class LoginGame extends cc.Component {
     private login_btn: cc.Button = null;
     @property(cc.EditBox)
     private inputNickname: cc.EditBox = null;
-    
+
     public nickname: string = '';
+
+    private scoket = null;
 
     // LIFE-CYCLE CALLBACKS:
     // 登陆按钮点击事件
     login(event) {
-        if(this.nickname){
+        if (this.nickname) {
             cc.log('去登陆');
-        }else{
+        } else {
             cc.error('未输入昵称');
         }
     }
@@ -41,7 +42,7 @@ export default class LoginGame extends cc.Component {
     onLoad() {
         this.login_btn.node.on('click', this.login, this);
         this.inputNickname.node.on('editing-did-ended', this.nameInput, this);
-        // let scoket = io('http://localhost:8080/');
+        this.scoket = io('http://localhost:8080/');
     }
 
     start() {

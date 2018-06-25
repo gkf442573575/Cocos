@@ -3,8 +3,7 @@
  * (c) 2014-2018 Guillermo Rauch
  * Released under the MIT License.
  */
-// if (!cc.sys.isNative) {
-//     // SocketIO 原始代码
+if (!cc.sys.isNative) {
     ! function (t, e) {
         "object" == typeof exports && "object" == typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define([], e) : "object" == typeof exports ? exports.io = e() : t.io = e()
     }(this, function () {
@@ -2107,5 +2106,5 @@
             }
         }])
     });
-// }
-//# sourceMappingURL=socket.io.js.map
+    //# sourceMappingURL=socket.io.js.map
+}
